@@ -60,7 +60,7 @@ app.get("/api/auth/me", async (req, res, next) => {
 app.get("/api/users", async (req, res, next) => {
   try {
     res.send(await fetchUsers());
-  } catch (ex) {
+  } catch (ex) {  
     next(ex);
   }
 });

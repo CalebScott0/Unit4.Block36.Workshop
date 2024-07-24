@@ -69,7 +69,6 @@ function App() {
   const [loginErr, setLoginErr] = useState(null);
   const [regErr, setRegErr] = useState(null);
   const [hasAccount, setHasAccount] = useState(false);
-  console.log(hasAccount);
 
   useEffect(() => {
     attemptLoginWithToken();
