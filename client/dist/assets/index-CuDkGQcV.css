@@ -1,0 +1,1 @@
+body{text-align:center}form{display:flex;flex-direction:column;width:500px;margin:5rem auto}form>*{margin:.5rem}ul{width:fit-content;margin:10px auto}li.favorite{border:solid 1px dodgerBlue}.error-msg{color:red;font-weight:600;letter-spacing:.1ch}.fav-btn{margin-left:10px}.logout-btn{margin-top:10rem}
