@@ -29,14 +29,13 @@ const Login = ({ login, loginErr, setLoginErr }) => {
 const Register = ({ register, regErr, setRegErr }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const submit = (ev) => {
-    if (password.length < 4) {
-      setTimeout(
-        setRegErr("Please enter a password with at least 4 characters."),
-        3000
-      );
-    }
     ev.preventDefault();
+    if (password.length < 4) {
+      setRegErr("Please enter a password with at least 4 characters.");
+      return;
+    }
     register({ username, password });
     setRegErr(null);
   };
@@ -136,10 +135,17 @@ function App() {
       window.localStorage.setItem("token", json.token);
       attemptLoginWithToken();
     } else {
-      setLoginErr("Username or password is incorrect.");
       console.log(json);
+      if (json.error === "not authorized") {
+        setLoginErr(
+          "Password is incorrect (hint: must be at least 4 characters)."
+        );
+      } else {
+        setLoginErr("User does not exist.");
+      }
     }
   };
+
   const register = async (credentials) => {
     const response = await fetch("/api/auth/register", {
       method: "POST",
